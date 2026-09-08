@@ -4,7 +4,7 @@ global:
 # Khai báo repository hình ảnh dùng chung cho 11 microservices
 images:
   repository: ghcr.io/nhutrangng/online-boutique
-  tag: "latest"
+  tag: "86a39c132b3bc0259661731779fd71ba3cbb0de6"
 
 # Cấu hình Cart Database (Redis nội bộ với đầy đủ tên Service)
 cartDatabase:
