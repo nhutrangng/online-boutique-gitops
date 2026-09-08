@@ -3,7 +3,7 @@ global:
 
 # Khai báo repository hình ảnh dùng chung
 images:
-  repository: gcr.io/nhutrangng/online-boutique
+  repository: ghcr.io/nhutrangng/online-boutique
   tag: "0a0ddde1a8ad5fee77c6a576db4b1207d367661e"
 
 # Cấu hình Cart Database (Redis nội bộ với đầy đủ tên Service)
