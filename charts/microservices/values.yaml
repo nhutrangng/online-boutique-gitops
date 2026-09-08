@@ -1,10 +1,10 @@
 global:
   domain: boutique.local
 
-# Khai báo repository hình ảnh dùng chung
+# Khai báo repository hình ảnh dùng chung cho 11 microservices
 images:
   repository: ghcr.io/nhutrangng/online-boutique
-  tag: "0a0ddde1a8ad5fee77c6a576db4b1207d367661e"
+  tag: "latest"
 
 # Cấu hình Cart Database (Redis nội bộ với đầy đủ tên Service)
 cartDatabase:
