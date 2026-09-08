@@ -1,0 +1,149 @@
+global:
+  domain: boutique.local
+
+# Khai báo repository hình ảnh dùng chung
+images:
+  repository: gcr.io/nhutrangng/online-boutique
+  tag: "v0.10.0"
+
+# Cấu hình Cart Database (Redis nội bộ với đầy đủ tên Service)
+cartDatabase:
+  type: in-cluster
+  inClusterRedis:
+    create: true
+    name: redis-cart
+    publicRepository: true
+  externalRedisTlsOrigination:
+    enable: false
+
+# Cấu hình Google Cloud & Profiler (Tắt trên KinD local)
+googleCloudOperations:
+  profiler: false
+  tracing: false
+  metrics: false
+
+nativeGrpcHealthCheck: false
+
+# Các cờ điều khiển tính năng hạ tầng
+serviceAccounts:
+  create: false
+networkPolicies:
+  create: false
+sidecars:
+  create: false
+authorizationPolicies:
+  create: false
+securityContext:
+  enable: false
+seccompProfile:
+  enable: false
+
+# OpenTelemetry Collector (Tắt trên KinD local)
+opentelemetryCollector:
+  create: false
+  name: opentelemetrycollector
+  projectId: ""
+
+# Shopping Assistant Service (Tắt trên KinD local)
+shoppingAssistantService:
+  create: false
+  name: shoppingassistantservice
+
+# 1. Frontend
+frontend:
+  create: true
+  name: frontend
+  containerPort: 8080
+  servicePort: 80
+  externalService: true
+  platform: "local"
+  cymbalBranding: "false"
+  singleSharedSession: "false"
+  virtualService:
+    create: false
+  resources: {}
+
+# 2. Cart Service
+cartService:
+  create: true
+  name: cartservice
+  containerPort: 7070
+  servicePort: 7070
+  resources: {}
+
+# 3. Product Catalog Service
+productCatalogService:
+  create: true
+  name: productcatalogservice
+  containerPort: 3550
+  servicePort: 3550
+  resources: {}
+
+# 4. Currency Service
+currencyService:
+  create: true
+  name: currencyservice
+  containerPort: 7000
+  servicePort: 7000
+  resources: {}
+
+# 5. Payment Service
+paymentService:
+  create: true
+  name: paymentservice
+  containerPort: 50051
+  servicePort: 50051
+  resources: {}
+
+# 6. Shipping Service
+shippingService:
+  create: true
+  name: shippingservice
+  containerPort: 50051
+  servicePort: 50051
+  resources: {}
+
+# 7. Email Service
+emailService:
+  create: true
+  name: emailservice
+  containerPort: 8080
+  servicePort: 8080
+  resources: {}
+
+# 8. Checkout Service
+checkoutService:
+  create: true
+  name: checkoutservice
+  containerPort: 5050
+  servicePort: 5050
+  resources: {}
+
+# 9. Recommendation Service
+recommendationService:
+  create: true
+  name: recommendationservice
+  containerPort: 8080
+  servicePort: 8080
+  resources: {}
+
+# 10. Ad Service
+adService:
+  create: true
+  name: adservice
+  containerPort: 9555
+  servicePort: 9555
+  resources: {}
+
+# 11. Load Generator
+loadGenerator:
+  create: true
+  name: loadgenerator
+  checkFrontendInitContainer: false
+  resources: {}
+
+# Ingress Configuration
+ingress:
+  enabled: true
+  className: nginx
+  host: ""
